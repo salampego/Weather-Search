@@ -1,10 +1,13 @@
 import { useState } from "react";
-import "./App.css";
 import { WeatherCard } from "./components/weatherCard";
+import { FormSearch } from "./components/formSearch";
+
+import "./App.css";
 
 function App() {
   const [weather, setWeather] = useState(false);
   const [citySearch, setCityFound] = useState("");
+
   const onSubmit = (e) => {
     e.preventDefault();
     const city = e.target.WeatherInput.value;
@@ -19,10 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <form onSubmit={onSubmit}>
-        <input type="text" name="WeatherInput" />
-        <button type="submit">Submit</button>
-      </form>
+      <FormSearch onSubmit={onSubmit} />
       {weather ? <WeatherCard weather={weather} city={citySearch} /> : null}
     </div>
   );
